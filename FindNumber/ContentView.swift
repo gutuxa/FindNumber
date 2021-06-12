@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var targetValue = 0
-    @State private var sliderValue: Float = 50
+    @State private var sliderValue = 50.0
     @State private var alertPresented = false
     
     let range = 0...100
@@ -52,7 +52,7 @@ struct ContentView: View {
     }
     
     private func computeScore() -> Int {
-        let difference = abs(targetValue - lround(Double(sliderValue)))
+        let difference = abs(targetValue - lround(sliderValue))
         return range.upperBound - difference
     }
     

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SliderBlock: View {
-    @Binding var value: Float
+    @Binding var value: Double
     
     let score: Int
     let range: ClosedRange<Int>

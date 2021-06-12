@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Slider: UIViewRepresentable {
-    @Binding var value: Float
+    @Binding var value: Double
     
     let score: Int
     let range: ClosedRange<Int>
@@ -31,7 +31,7 @@ struct Slider: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UISlider, context: Context) {
-        uiView.value = value
+        uiView.value = Float(value)
         uiView.thumbTintColor = .red.withAlphaComponent(thumbAlpha)
     }
     
@@ -42,14 +42,14 @@ struct Slider: UIViewRepresentable {
 
 extension Slider {
     class Coordinator: NSObject {
-        @Binding var value: Float
+        @Binding var value: Double
         
-        init(value: Binding<Float>) {
+        init(value: Binding<Double>) {
             self._value = value
         }
         
         @objc func onChange(_ sender: UISlider) {
-            value = sender.value
+            value = Double(sender.value)
         }
     }
 }
