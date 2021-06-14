@@ -28,7 +28,7 @@ struct ContentView: View {
                     .padding()
                 SliderBlock(
                     value: $sliderValue,
-                    score: computeScore(),
+                    alpha: computeSliderAlpha(),
                     range: range
                 )
                     .padding(.bottom, 60)
@@ -54,6 +54,10 @@ struct ContentView: View {
     private func computeScore() -> Int {
         let difference = abs(targetValue - lround(sliderValue))
         return range.upperBound - difference
+    }
+    
+    private func computeSliderAlpha() -> Double {
+        Double(computeScore()) / Double(range.upperBound)
     }
     
     private func showScore() {
